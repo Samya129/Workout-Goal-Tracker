@@ -19,7 +19,7 @@ const WorkoutSchema = new Schema({
         weight: {
           type: Number,
           trim: true,
-          //Using a default for exercises that perhaps do not consist of using any weights, sets, reps, and distance.
+          //Using a default for exercises that perhaps do not consist of using any weights, sets, reps, and/or distance.
           default: 0
         },
         sets: {
