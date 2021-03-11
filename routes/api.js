@@ -38,5 +38,17 @@ router.post("/api/workouts", function (req, res) {
     });
 });
 
+//Fourth route from front-end that is needed:
+router.get("/api/workout/range", function (req, res) {
+  Workout.find({})
+  //code for each sort that needs to be done... Indexes?
+  // .sort({ date: -1 }) ?? sort by each 
+  .then(dbExercise => {
+    res.json(dbExercise);
+  })
+  .catch(err => { //throw error if issue
+    res.status(400).json(err);
+  });
+});
 
 module.exports = router
