@@ -27,8 +27,16 @@ router.put("/api/workouts/:id", function (req, res) {
     });
 });
 
-
-
+//Creating a exercise:
+router.post("/api/workouts", function (req, res) {
+  Workout.create(req.body)
+    .then((workoutDb) => {
+      res.json(workoutDb);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
 
 module.exports = router
