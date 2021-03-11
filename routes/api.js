@@ -12,6 +12,22 @@ router.get("/api/workouts", function (req, res) {
     });
 });
 
+//Update information within exercises array of different objects
+router.put("/api/workouts/:id", function (req, res) {
+  Workout.findOneAndUpdate(
+    req.params.id, //with the params of that specific id
+    { $push: { exercises: req.body } }, //pushing everything into the req.body of exercises from schema created
+    { new: true }
+  )
+    .then((dbWorkout) => { //pass the dbWorkout argument and pass the response of it in json.
+      res.json(dbWorkout);
+    })
+    .catch((err) => { //throw error
+      res.json(err);
+    });
+});
+
+
 
 
 
