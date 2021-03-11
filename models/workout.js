@@ -40,8 +40,18 @@ const WorkoutSchema = new Schema({
         }
       }
     ],
+    day: { //current date
+      type: Date,
+      default: Date.now()
+    },
+    durationTotal: { //of that specific exercise
+      type: Number,
+      trim: true,
+      default: 0,
+    },
   });
   
-  //need to call workoutSchema somehow to highlight and activate it...
+  //need to call workoutSchema and export it
+  const Workout = mongoose.model("Workout", WorkoutSchema);
   
-
+  module.exports = Workout;
