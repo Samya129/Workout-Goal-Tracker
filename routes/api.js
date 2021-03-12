@@ -15,8 +15,12 @@ router.get("/api/workouts", function (req, res) {
 //Update information within exercises array of different objects
 router.put("/api/workouts/:id", function (req, res) {
   Workout.findOneAndUpdate(
-    req.params.id, //with the params of that specific id
-    { $push: { exercises: req.body } }, //pushing everything into the req.body of exercises from schema created
+    {_id: req.params.id}, //with the params of that specific id
+    { 
+      $inc: {totalDuration: req.body.duration},
+      $push: { exercises: req.body } 
+    }, //pushing everything into the req.body of exercises from schema created
+    
     { new: true }
   )
     .then((dbWorkout) => { //pass the dbWorkout argument and pass the response of it in json.
@@ -39,10 +43,19 @@ router.post("/api/workouts", function (req, res) {
 });
 
 //Fourth route from front-end that is needed:
-router.get("/api/workout/range", function (req, res) {
-  Workout.find({})
-  //code for each sort that needs to be done... Indexes?
-  // .sort({ date: -1 }) ?? sort by each 
+router.get("/api/workouts/range", function (req, res) {
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration:{
+          $sum: "$exercises.duration", //note to change
+        },
+        
+      }
+    }
+  ])
+  .sort({ date: -1 }) //ascending
+  .limit(7)
   .then(dbExercise => {
     res.json(dbExercise);
   })

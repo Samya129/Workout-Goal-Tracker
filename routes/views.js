@@ -2,10 +2,6 @@
 var path = require("path");
 const router = require("express").Router();
 
-//If other or not specified, take to home route (default):
-router.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-})
 //Automatic home route:
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
@@ -17,6 +13,10 @@ router.get("/exercise", function(req, res) {
 //Stats route:
 router.get("/stats", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/stats.html"));
+})
+//If other or not specified, take to home route (default): 
+router.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 })
 
 //Export router with all get requests:
