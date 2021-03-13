@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const WorkoutSchema = new Schema({
   day: { //current date
     type: Date,
-    default: Date.now()
+     default: Date.now(),
   },
   //For the following exercises:  
   exercises: [ 
