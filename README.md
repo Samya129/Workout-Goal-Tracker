@@ -24,6 +24,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete.
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Criteria](#criteria)
+* [Application](#application)
 * [Questions](#questions)
 
 ## Installation 
@@ -75,8 +76,12 @@ The user should be able to:
   * View the total duration of each workout from the past seven workouts on the `stats` page.
 ```
 
-## Questions
+## Application
 
 ![GitHub Logo](./assets/images/workoutTracker.png)
+
+* [Deployed](https://arcane-dusk-23236.herokuapp.com/)
+
+## Questions
 
 * If you have any questions regarding this repository, contact me either by email at Samyaf020@gmail.com, or you can find more of my work within my github account attached here [Github](https://github.com/Samya129). Here, you can also open an issue if needed.
